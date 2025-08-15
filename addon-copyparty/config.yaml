@@ -1,0 +1,32 @@
+name: CopyParty
+version: dev
+slug: copyparty
+description: Portable file server with accelerated resumable uploads, dedup, WebDAV, FTP, TFTP, zeroconf, media indexer, thumbnails++ all in one file, no deps 
+url: https://github.com/PuffShr1k3/hassio-addons/addon-copyparty
+codenotary: rudi.bartsch@proton.me
+startup: services
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armv7
+ports:
+  3923/tcp: 3923
+ports_description:
+  3923/tcp: copyparty's primary port
+host_network: true
+privileged:
+  - NET_ADMIN
+  - SYS_ADMIN
+devices:
+  - /dev/net/tun
+map:
+  - ssl:rw
+options:
+  networks: []
+  api_auth_token: ""
+schema:
+  networks:
+    - str
+  api_auth_token: str
+  log_level: list(trace|debug|info|notice|warning|error|fatal)?
